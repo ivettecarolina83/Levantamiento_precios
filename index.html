@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#17324d">
+  <title>Levantamiento de precios</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="wrap">
+  <header><h1>Levantamiento de precios</h1><p>Registra los precios encontrados en cada establecimiento.</p></header>
+  <section class="card">
+    <label for="establecimiento">Nombre del establecimiento</label>
+    <input id="establecimiento" autocomplete="organization" placeholder="Ej.: Mercafur">
+    <p class="hint">Completa únicamente los productos que consigas. Presentación y precio son opcionales.</p>
+  </section>
+  <form id="priceForm">
+    <div id="productos"></div>
+    <button class="primary" type="submit">Guardar registro</button>
+  </form>
+  <section class="card records">
+    <div class="records-head"><h2>Registros guardados en este dispositivo</h2><button id="exportBtn" type="button">Exportar CSV</button></div>
+    <div id="registros"></div>
+  </section>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>
