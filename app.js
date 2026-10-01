@@ -2,7 +2,7 @@ const SUPABASE_URL="https://gdlbojftmadrcfnefrvs.supabase.co";
 const SUPABASE_KEY="sb_publishable_RNdT1QCuqDm3_weCvConQQ_rZPcswYR";
 const API=SUPABASE_URL+"/rest/v1/registros_precios";
 const INSUMOS=["Pan de hamburguesa grande","Pan de hamburguesa pequeño","Pan de perro grande","Pan de perro pequeño","Queso amarillo rebanado","Jamón rebanado","Queso pecorino","Papas ralladas","Papas naturales","Chorizo","Pollo (pechuga o milanesa)","Carne molida","Ajo","Vinagre","Huevo","Limón","Salchichas","Carne para mechar","Plátano verde","Maíz desgranado","Mozzarella"];
-const productos=document.querySelector("#productos"),form=document.querySelector("#priceForm"),establecimiento=document.querySelector("#establecimiento"),registrosEl=document.querySelector("#registros"),toast=document.querySelector("#toast"),submitBtn=form.querySelector('button[type="submit"]');
+const productos=document.querySelector("#productos"),form=document.querySelector("#priceForm"),establecimiento=document.querySelector("#establecimiento"),toast=document.querySelector("#toast"),submitBtn=form.querySelector('button[type="submit"]');
 INSUMOS.forEach((nombre,i)=>{const d=document.createElement("section");d.className="item";d.innerHTML='<h3>'+nombre+'</h3><div class="fields"><input data-i="'+i+'" data-field="presentacion" placeholder="Presentación (ej.: paquete de 20)"><input data-i="'+i+'" data-field="precio" inputmode="decimal" placeholder="Precio"></div>';productos.appendChild(d);});
 function showToast(msg){toast.textContent=msg;toast.style.display="block";setTimeout(()=>toast.style.display="none",2800)}
 function normalizarPrecio(v){const s=v.trim().replace(/\s/g,"").replace(",",".").replace(/[^0-9.-]/g,"");return s===""?null:Number(s)}
@@ -15,5 +15,3 @@ form.addEventListener("submit",async e=>{
  catch(err){console.error(err);showToast("No se pudo guardar. Revisa la conexión e inténtalo otra vez.");}
  finally{submitBtn.disabled=false;submitBtn.textContent="Guardar registro";}
 });
-registrosEl.innerHTML="<p class='hint'>Los registros se guardan en línea en Supabase.</p>";
-document.querySelector("#exportBtn").style.display="none";
